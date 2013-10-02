@@ -161,7 +161,8 @@ connect: {
       dist: {
         files: {
           src: [
-        '<%= yeoman.dist %>/scripts/{,*/}*.js',
+        // '<%= yeoman.dist %>/scripts/{,*/}*.js',
+        '<%= yeoman.dist %>/scripts/**/*.js',
       '<%= yeoman.dist %>/styles/{,*/}*.css',
     '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
     '<%= yeoman.dist %>/styles/fonts/*'
@@ -231,7 +232,7 @@ cssmin: {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: ['*.html', 'views/*.html'],
+          src: ['*.html', 'views/**/*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
