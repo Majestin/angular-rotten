@@ -32,6 +32,6 @@ angular.module('devStudyAngularMissionApp', [])
     controller: 'MainCtrl'
   })  
   .otherwise({
-    redirectTo: '/'
+    redirectTo: '/movies'
   });
 }]);
