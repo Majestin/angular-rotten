@@ -1,0 +1,104 @@
+<div class="row">
+	<div class="span6">
+		<section class="lead">
+			<h3>
+				Upcoming Movies
+				<small>
+					Found 
+					<span class="badge badge-info">{{ upcomings.length }}</span> 
+					results
+				</small>
+			</h3>
+		</section>
+		<div class="input-append">
+			<input ng-model="query" type="text" class="span4 search-query" placeholder="Search for a movie...">
+			<select ng-model="orderProp" class="span1">
+				<option value="title">Alphabetical</option>
+				<option value="ratings.critics_score">Score ASC</option>
+				<option value="-ratings.critics_score">Score DESC</option>
+				<option value="runtime">Runtime ASC</option>
+				<option value="-runtime">Runtime DESC</option>				
+			</select>	
+		</div>
+		<div id="upcoming-region">
+
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Title</th>
+						<th>Released</th>
+						<th>Rating</th>
+						<th>Runtime</th>
+						<th>Score</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="upcoming in upcomings | filter:query | orderBy:orderProp">
+					<td>
+						<div class="thumbnail">
+							<img src="{{upcoming.posters.thumbnail}}">
+						</div>
+					</td>
+					<td>{{ upcoming.title }}</td>
+					<td>{{ upcoming.year }}</td>
+					<td>{{ upcoming.mpaa_rating }}</td>
+					<td>{{ upcoming.runtime }} minutes</td>
+					<td>{{ upcoming.ratings.critics_score }}</td>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="span6">
+		<section class="lead">
+			<h3>
+				In Theatres
+				<small>
+					Found 
+					<span class="badge badge-info">{{ movies.length }}</span> 
+					results
+				</small>				
+			</h3>
+		</section>
+		Sort By: 
+
+		<div class="input-append">
+			<input ng-model="theatre_query" type="text" class="span4 search-query" placeholder="Search for a movie...">
+			<select ng-model="theatre_orderProp" class="span1">
+				<option value="title">Alphabetical</option>
+				<option value="ratings.critics_score">Score ASC</option>
+				<option value="-ratings.critics_score">Score DESC</option>
+				<option value="runtime">Runtime ASC</option>
+				<option value="-runtime">Runtime DESC</option>					
+			</select>	
+		</div>
+		<div id="theatre-region">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Title</th>
+						<th>Released</th>
+						<th>Rating</th>
+						<th>Runtime</th>
+						<th>Score</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="movie in movies | filter:theatre_query | orderBy:theatre_orderProp">
+					<td>
+						<div class="thumbnail">
+							<img src="{{movie.posters.thumbnail}}">
+						</div>
+					</td>
+					<td>{{ movie.title }}</td>
+					<td>{{ movie.year }}</td>
+					<td>{{ movie.mpaa_rating }}</td>
+					<td>{{ movie.runtime }} minutes</td>
+					<td>{{ movie.ratings.critics_score }}</td>
+
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
